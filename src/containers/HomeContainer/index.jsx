@@ -8,7 +8,9 @@ import {
 import React from 'react';
 import * as Animatable from 'react-native-animatable';
 import { HeroImage } from '../../../assets';
+import { useNavigation } from '@react-navigation/native';
 const HomeContainer = () => {
+    const navigation = useNavigation();
   return (
     <View className="flex-1 bg-white relative pt-10">
       {/*first section */}
@@ -57,7 +59,9 @@ const HomeContainer = () => {
           easing="ease-out"
           className="absolute bottom-24 w-24 h-24 border-l-2 border-r-2 border-t-4 border-cyan-300 rounded-full items-center justify-center"
         >
-          <TouchableOpacity activeOpacity={0.8}>
+          <TouchableOpacity activeOpacity={0.8}
+            onPress={() => navigation.navigate('Discover')}
+          >
             <Animatable.View
               animation="pulse"
               duration={1500}
