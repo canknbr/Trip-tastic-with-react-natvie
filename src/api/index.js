@@ -1,6 +1,12 @@
 import axios from 'axios';
 
-export const getData = async (type="restaurants") => {
+export const getData = async (
+  type = 'restaurants',
+  bl_lat,
+  bl_lng,
+  tr_lat,
+  tr_lng
+) => {
   try {
     const {
       data: { data },
@@ -8,13 +14,13 @@ export const getData = async (type="restaurants") => {
       `https://travel-advisor.p.rapidapi.com/${type}/list-in-boundary`,
       {
         params: {
-          bl_latitude: '39.73042105857623',
-          tr_latitude: '40.07633195201663',
-          bl_longitude: '32.51847347138715',
-          tr_longitude: '33.00705601280067',
+          bl_latitude: bl_lat ? bl_lat : '39.73042105857623',
+          tr_latitude: tr_lat ? tr_lat : '40.07633195201663',
+          bl_longitude: bl_lng ? bl_lng: '32.51847347138715',
+          tr_longitude: tr_lng ? tr_lng : '33.00705601280067',
           limit: '30',
           currency: 'USD',
-          lunit: 'km',
+          unit: 'km',
           lang: 'en_US',
         },
         headers: {
