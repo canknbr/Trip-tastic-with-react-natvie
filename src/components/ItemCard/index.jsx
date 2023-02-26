@@ -1,11 +1,14 @@
 import { View, Text ,Image,TouchableOpacity} from 'react-native'
 import React from 'react'
+import { useNavigation } from '@react-navigation/native';
 import { Ionicons } from '@expo/vector-icons';
 
 const ItemCard = ({title,imgSrc,location,data}) => {
-
+const navigation = useNavigation();
   return (
-    <TouchableOpacity className="w-[180px] rounded-md border border-white shadow-md px-3 py-2 my-4 space-y-2 bg-white ">
+    <TouchableOpacity activeOpacity={0.8} className="w-[180px] rounded-md border border-white shadow-md px-3 py-2 my-4 space-y-2 bg-white "
+        onPress={() => navigation.navigate('Detail',{data})}
+    >
       <Image
         source={{
             uri: imgSrc,
